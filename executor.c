@@ -8,24 +8,21 @@ int main(){
 
   char *s = (char*)malloc(sizeof(s));
   fgets(s, sizeof(s), stdin);
-  strtok(s, "\n");
-  printf("hello \n");
-  char *command [17];
+  s = strsep(&s, "\n");
+  
+  
+  printf("input: %s\n",s);
+   
+  
+  char * command [100];
 
   int i=0;
   command[0]="a";
-  while (*command[i]){
-    command[i]=strsep(&s, " ");
-    printf("%s", command[i]);
+  while (command[i] = strsep(&s," ")){
     i++;
   }
-      command[i]=NULL;
-
   
-  char *file=command[0];
-  (*command)++;
-  errno=execvp(command[0], command);
-  printf("%s \n", strerror(errno));
-  printf("exists ? \n");
+ 
+  execvp(command[0],command);
   return 0;
 }
